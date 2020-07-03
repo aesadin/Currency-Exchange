@@ -14,7 +14,20 @@ async function getExchangeRate() {
   }
 }
 
-function showExchangeRate()
+function showExchangeRate(exchangeResponse) {
+  if( ) {
+    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.EUR}`)
+  } else if() {
+    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.NZD}`)
+  } else if() {
+    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.NOK}`)
+  } else if() {
+    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.PLN}`)
+  } else if() {
+    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.SAR}`)
+  }
+  
+}
 
 
 
