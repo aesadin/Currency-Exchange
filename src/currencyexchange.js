@@ -13,3 +13,8 @@ export async function callExchageRate(){
     return false;
   }
 }
+
+function calculateCurrencyOutput(usdCurrency, exchangeRate) {
+  let newCurrency = (usdCurrency * exchangeRate);
+  return newCurrency;
+}
