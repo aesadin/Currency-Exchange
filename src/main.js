@@ -10,21 +10,23 @@ async function getExchangeRate() {
   if(!apiResponse) {
     return 'There has been an error processing your request'
   } else {
-    showExchangeRate(apiResponse.conversion_rates);
+    showExchangeRate(apiResponse);
   }
 }
 
 function showExchangeRate(exchangeResponse) {
   if( ) {
-    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.EUR}`)
+    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.EUR}`);
   } else if() {
-    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.NZD}`)
+    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.NZD}`);
   } else if() {
-    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.NOK}`)
+    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.NOK}`);
   } else if() {
-    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.PLN}`)
+    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.PLN}`);
   } else if() {
-    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.SAR}`)
+    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.SAR}`);
+  } else {
+    $('.revealedCurrency').text('This currency is not available');
   }
   
 }
