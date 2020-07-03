@@ -5,7 +5,16 @@ import './styles.css';
 import { callExchangeRate } from './src/currencyexchange.js';
 
 
+async function getExchangeRate() {
+  const apiResponse = await callExchangeRate();
+  if(!apiResponse) {
+    return 'There has been an error processing your request'
+  } else {
+    showExchangeRate(apiResponse.conversion_rates);
+  }
+}
 
+function showExchangeRate()
 
 
 
