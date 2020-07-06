@@ -3,13 +3,10 @@
 <head>
   <title>currency &#x1F4B0 exchange</title>
 </head>
-
 <body>
-  <div class="picture">
-  <h1 class="jumbotron">Currency Exchange</h1>
-
-  <div id="form-control">
-    <div class="container-fluid">
+  <div class="container">
+    <h1 class="jumbotron">Currency Exchange</h1>
+    <div>
       <form id="inputForm">
         <div class="form-group"></div>
           <label for="exchange">Enter an ammount of USD</label>
@@ -19,18 +16,17 @@
           <label for="numInput">Enter currency type of desired country</label>
           <input id="currency" class="form-control" maxlength=3>
         </div>
+        <div id="form-group">
+          <h2>Exchange Rate for Selected Currency</h2>
+          <p class="revealedRate"></p>
+        </div>
+        <div id="form-group">
+          <h2>Amount in New Currency</h2>
+          <p class="revealedExchange"></p>
+        </div>
           <button type="submit">X-change &#x1F4B0</button>
       </form>
     </div>
   </div>
-
-  <div id="rate">
-    <div class="container">
-      <h2>Exchange Rate for Selected Currency</h2>
-      <h3 class="revealedRate"></h3>
-      <button type="button" id="startOver">Start Over</button>
-    </div>
-  </div>
-</div>
 </body>
 </html>
