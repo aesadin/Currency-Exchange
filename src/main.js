@@ -1,56 +1,65 @@
+import { callExchangeRate } from './currencyexchange.js';
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
-import { callExchangeRate } from './src/currencyexchange.js';
+
 
 // returns error message to user
 async function getExchangeRate() {
   const allExchangeRates = await callExchangeRate();
   if(!allExchangeRates) {
-    return 'There has been an error processing your request'
+    return 'There has been an error processing your request';
   } else {
     showExchangeRate(allExchangeRates.conversion_rates);
   }
 }
 
 // displays user inputted currency or tells user currency is not available
-function showExchangeRate(currencyType) {
+async function showExchangeRate(currencyType) {
+  let response = await callExchangeRate();
   if(currencyType === "EUR" ) {
-    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.EUR}`);
+    $('.revealedRate').append(`Your selection's conversion rate is ${response.conversion_rates.EUR}`);
   } else if(currencyType === "NZD") {
-    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.NZD}`);
+    $('.revealedRate').append(`Your selection's conversion rate is ${response.conversion_rates.NZD}`);
   } else if(currencyType === "NOK") {
-    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.NOK}`);
+    $('.revealedRate').append(`Your selection's conversion rate is ${response.conversion_rates.NOK}`);
   } else if(currencyType === "PLN") {
-    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.PLN}`);
+    $('.revealedRate').append(`Your selection's conversion rate is ${response.conversion_rates.PLN}`);
   } else if(currencyType === "SAR") {
-    $('.revealedRate').text(`Your converted currency is ${exchangeResponse.conversion_rates.SAR}`);
+    $('.revealedRate').append(`Your selection's conversion rate is ${response.conversion_rates.SAR}`);
   } else {
-    $('.revealedRate').text('This currency is not available');
+    $('.revealedRate').append('This conversion rate is not available');
   }
-  console.log(currencyType)
 }
 
+
+
 // still working to make this a proper UI function, but it will calculate the new currency in the user's preferred country
-function calculateCurrencyOutput(usdCurrency, exchangeRate) {
+async function calculateCurrencyOutput(usdCurrency, exchangeRate) {
+  let exchangeRate = await callExchangeRate();
   let newCurrency = (usdCurrency * exchangeRate);
   return newCurrency;
 }
 
 
 
+
 $(document).ready(function () {
-  $('#exchangeForm').submit(function (event) {
+  $('#inputForm').submit(function (event) {
     event.preventDefault();
-    let usMoney = parseInt($("#exchange").val(""));
+    let usdCurrency = parseInt($("#exchange").val(""));
     let currencyType = $("#currency").val("").toUpperCase();
+    let exchangeRate = []; // need function to grab current exchange rate so calculateCurrencyOutput function can be called
+
     callExchangeRate();
     getExchangeRate()
     showExchangeRate(currencyType);
+    calculateCurrencyOutput(usdCurrency, exchangeRate);
 
-    console.log(usMoney)
+    console.log(usdCurrency)
     $(".exchangedCurrency").html();
+    $(".revealedExchange").append();
 
   });
 });
