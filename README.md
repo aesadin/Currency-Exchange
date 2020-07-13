@@ -12,7 +12,7 @@ _This application takes a user's input and returns a value. The input is a dolla
 | Spec | Input | Output |
 | :-------------     | :------------- | :------------- |
 |Create async function to call the exchange rate API.|||
-|Create function that displays each input exchange rate, based on the API call function.|USD: 1|EUR: .8877|
+|Create function that displays each country's exchange rate, based on user input and the API call function.|USD: 1|EUR: .8877|
 |Create function that takes USD currency and multiplies it by the given exchange rate of the inputted currency to return the amount of money in the requested currency.|USD: 400 * EUR exchange rate: .8877|355.08|
 
 
@@ -32,7 +32,7 @@ _This application takes a user's input and returns a value. The input is a dolla
 * _On your homescreen open up your preferred terminal - GitBash recommended - and clone the file to your desktop. If you are using GitBash use command $ git clone {.git link}_
 * _If you are using VScode then navivigate using cd {filename} and use the command $ code . to open this cloned file into VScode._
 * #### Before installing:
-  * Create a .gitignore file using the $ touch command and add your .env to the git .gitignore file.
+  * Create a .gitignore file using the $ touch command and add your API key to the .env gile and then add that to the git      .gitignore file.
   * Naviagate to https://www.exchangerate-api.com/ and create an account.
   * Copy and paste the API key provided to you into your .env file. 
 * _Navigate your terminal into the root directory of the project and run the command $ npm install_
