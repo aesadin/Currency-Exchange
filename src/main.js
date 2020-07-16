@@ -18,15 +18,15 @@ async function getExchangeRate(currencyType, usdCurrency) {
 
 function showExchangeRate(currencyType, response, usdCurrency) {
   if(currencyType === "EUR" ) {
-    $('.revealedRate').html(`Your selection's conversion rate is ${response.conversion_rates.EUR} and your new total is ${response.conversion_rates.EUR * usdCurrency}`);
+    $('.revealedRate').html(`Your selection's conversion rate is ${response.conversion_rates.EUR} and your new total is € ${(response.conversion_rates.EUR * usdCurrency).toFixed(2)}`);
   } else if(currencyType === "NZD") {
-    $('.revealedRate').html(`Your selection's conversion rate is ${response.conversion_rates.NZD} and your new total is ${response.conversion_rates.NZD * usdCurrency}`);
-  } else if(currencyType === "NOK") {
-    $('.revealedRate').html(`Your selection's conversion rate is ${response.conversion_rates.NOK} and your new total is ${response.conversion_rates.NOK * usdCurrency}`);
-  } else if(currencyType === "PLN") {
-    $('.revealedRate').html(`Your selection's conversion rate is ${response.conversion_rates.PLN} and your new total is ${response.conversion_rates.PLN * usdCurrency}`);
-  } else if(currencyType === "SAR") {
-    $('.revealedRate').html(`Your selection's conversion rate is ${response.conversion_rates.SAR} and your new total is ${response.conversion_rates.SAR * usdCurrency}`);
+    $('.revealedRate').html(`Your selection's conversion rate is ${response.conversion_rates.NZD} and your new total is $ ${(response.conversion_rates.NZD * usdCurrency).toFixed(2)}`);
+  } else if(currencyType === "JPY") {
+    $('.revealedRate').html(`Your selection's conversion rate is ${response.conversion_rates.JPY} and your new total is ¥ ${(response.conversion_rates.JPY * usdCurrency).toFixed(2)}`);
+  } else if(currencyType === "EGP") {
+    $('.revealedRate').html(`Your selection's conversion rate is ${response.conversion_rates.EGP} and your new total is E£ ${(response.conversion_rates.EGP * usdCurrency).toFixed(2)}`);
+  } else if(currencyType === "AUD") {
+    $('.revealedRate').html(`Your selection's conversion rate is ${response.conversion_rates.AUD} and your new total is $ ${(response.conversion_rates.AUD * usdCurrency).toFixed(2)}`);
   } else {
     $('.revealedRate').html('This conversion rate is not available');
   }
@@ -39,6 +39,8 @@ $(document).ready(function () {
     event.preventDefault();
     let usdCurrency = parseInt($(".exchange").val());
     let inputCurrency = $(".currency").val();
+    $(".exchange").val("");
+    $(".currency").val("");
     let currencyType = inputCurrency.toUpperCase();
     getExchangeRate(currencyType, usdCurrency);
 
