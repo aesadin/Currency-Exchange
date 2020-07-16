@@ -5,19 +5,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
 
-// returns error message to user
-async function getExchangeRate() {
-  let currencyType;
-  console.log(currencyType);
-  const allExchangeRates = await callExchangeRate();
-  if(!allExchangeRates) {
+
+async function getExchangeRate(currencyType, usdCurrency) {
+  const response = await callExchangeRate();
+  if(!response) {
     $(".error").html('<h3><em>There has been an error processing your request</em></h3>');
   } else {
-    showExchangeRate(currencyType, allExchangeRates);
+    showExchangeRate(currencyType, response, usdCurrency);
   }
 }
 
-// displays user inputted currency or tells user currency is not available
+
 function showExchangeRate(currencyType, response, usdCurrency) {
   if(currencyType === "EUR" ) {
     $('.revealedRate').html(`Your selection's conversion rate is ${response.conversion_rates.EUR} and your new total is ${response.conversion_rates.EUR * usdCurrency}`);
@@ -39,13 +37,10 @@ function showExchangeRate(currencyType, response, usdCurrency) {
 $(document).ready(function () {
   $('#inputForm').submit(function (event) {
     event.preventDefault();
-    let usdCurrency = parseInt($("#exchange").val());
-    let inputCurrency = $("#currency").val();
+    let usdCurrency = parseInt($(".exchange").val());
+    let inputCurrency = $(".currency").val();
     let currencyType = inputCurrency.toUpperCase();
-    
-
-    getExchangeRate(currencyType);
-    showExchangeRate(currencyType, usdCurrency);
+    getExchangeRate(currencyType, usdCurrency);
 
   });
 });
